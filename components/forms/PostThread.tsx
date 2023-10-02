@@ -9,6 +9,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useOrganization } from "@clerk/nextjs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ThreadValidation } from "@/lib/validations/thread";
@@ -18,21 +19,25 @@ import { useRouter, usePathname } from "next/navigation";
 import { createThread } from "@/lib/actions/thread.actions";
 
 export default function PostThread({ userId }: { userId: string }) {
+  const {organization} = useOrganization()
   const pathname = usePathname();
   const router = useRouter();
+  console.log("Organization",organization)
   const form = useForm<z.infer<typeof ThreadValidation>>({
     resolver: zodResolver(ThreadValidation),
     defaultValues: {
       thread: "",
       accountId: userId,
+     
     },
   });
 
   const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
+    console.log("comm",organization)
     await createThread({
       text: values.thread,
       author: userId,
-      communityId: null,
+      communityId:organization ? organization?.id : null,
       path: pathname,
     });
     router.push('/')
