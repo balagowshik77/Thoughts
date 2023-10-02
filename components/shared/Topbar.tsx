@@ -7,7 +7,7 @@ const Topbar = () => {
     <nav className="topbar">
       <Link href="/" className="flex items-center cursor-pointer gap-4">
         <Image src="/assets/logo.svg" alt="logo" height={28} width={28} />
-        <p className="text-heading3-bold text-light-2 max-xs-hidden">Threads</p>
+        <p className="text-heading3-bold text-light-2 max-xs-hidden">Thoughts</p>
       </Link>
       <div className="flex items-center gap-2">
         <div className="block md:hidden">
