@@ -24,7 +24,7 @@ const ThreadsTab = async ({ currentUserId, accountId, accountType }: props) => {
         <ThreadCard
           key={thread._id}
           id={thread._id}
-          currentUser={currentUserId}
+          currentUserId={currentUserId}
           parentId={thread.parentId}
           content={thread.text}
           author={
