@@ -29,7 +29,7 @@ async function Page({
 
   return (
     <>
-      <div className="flex justify-between md:w-full w-96 items-center">
+      <div className="flex justify-between sm:w-80 md:w-full items-center">
         <h1 className="head-text">Communities</h1>
         <CreateOrg />
       </div>
